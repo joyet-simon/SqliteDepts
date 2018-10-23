@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout style="@style/buttons">
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/noToSearch" />
+
+        <ImageView
+            style="@style/button_picture"
+            android:onClick="btSearch"
+            android:src="@drawable/bt1_search" />
+    </LinearLayout>
+
+    <View style="@style/line" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="2">
+
+        <TextView
+            style="@style/label"
+            android:text="@string/noDept" />
+
+        <EditText
+            android:id="@+id/etNoDept"
+            style="@style/input"
+            android:inputType="" />
+
+        <TextView
+            style="@style/label"
+            android:text="@string/noRegion" />
+
+        <EditText
+            android:id="@+id/etNoRegion"
+            style="@style/input" />
+
+        <TextView
+            style="@style/label"
+            android:text="@string/nomDept" />
+
+        <EditText
+            android:id="@+id/etNom"
+            style="@style/input" />
+
+        <TextView
+            style="@style/label"
+            android:text="@string/nomStdDept" />
+
+        <EditText
+            android:id="@+id/etNomStd"
+            style="@style/input" />
+
+        <TextView
+            style="@style/label"
+            android:text="@string/areaDept" />
+
+        <EditText
+            android:id="@+id/etSurface"
+            style="@style/input" />
+
+        <TextView
+            style="@style/label"
+            android:text="@string/createdDateDept" />
+
+        <EditText
+            android:id="@+id/etDateCreation"
+            style="@style/input" />
+
+        <TextView
+            style="@style/label"
+            android:text="@string/capitalDept" />
+
+        <EditText
+            android:id="@+id/etChefLieu"
+            style="@style/input" />
+
+        <TextView
+            style="@style/label"
+            android:text="@string/urlDept" />
+
+        <EditText
+            android:id="@+id/etUrlWiki"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:padding="0dp"
+            android:inputType="textMultiLine"/>
+    </GridLayout>
+
+    <LinearLayout style="@style/buttons">
+
+
+        <ImageView
+            style="@style/button_picture"
+            android:onClick="btInsert"
+            android:src="@drawable/bt1_add" />
+
+        <ImageView
+            style="@style/button_picture"
+            android:onClick="btClear"
+            android:src="@drawable/bt1_cancel" />
+
+        <ImageView
+            style="@style/button_picture"
+            android:onClick="btUpdate"
+            android:src="@drawable/bt1_save" />
+
+        <ImageView
+            style="@style/button_picture"
+            android:onClick="btDelete"
+            android:src="@drawable/bt1_delete" />
+    </LinearLayout>
+
+</LinearLayout>
