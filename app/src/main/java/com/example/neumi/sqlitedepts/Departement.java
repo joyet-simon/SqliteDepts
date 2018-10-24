@@ -4,11 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.EmptyStackException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -23,6 +21,7 @@ public class Departement {
     private Date dateCreation;
     private String chefLieu;
     private String urlWiki;
+    private Region region;
 
     public Departement(Context c) {
         DbGeo dbgeo = DbGeo.getInstance(c);
@@ -44,9 +43,17 @@ public class Departement {
             dateCreation = new SimpleDateFormat("yyyy-MM-dd").parse(cursor.getString(5));
             chefLieu = (cursor.getString(6));
             urlWiki = (cursor.getString(7));
+            String[] colonnesReg = {"no_region", "nom"};
+            String critereReg = "no_region = " + noRegion;
+            Cursor cursorReg = db.query("regions", colonnesReg, critereReg, null, null, null, null);
+            if (cursorReg.getCount() > 0) {
+                cursorReg.moveToFirst();
+                region = new Region(Integer.parseInt(cursorReg.getString(0)), cursorReg.getString(1));
+            }
         } else {
             throw new GeoException(" Départements introuvable!");
         }
+
     }
 
     public Departement(Context c, String no) throws Exception {
@@ -68,16 +75,16 @@ public class Departement {
     public void update() throws Exception {
         if (!getNoDept().isEmpty()) {
             ContentValues values = new ContentValues();
-            values.put("no_dept", getNoDept());
-            values.put("no_region", getNoRegion());
-            values.put("nom", getNom());
-            values.put("nom_std", getNomStd());
-            values.put("surface", getSurface());
+            values.put("no_dept", noDept);
+            values.put("no_region", noRegion);
+            values.put("nom", nom);
+            values.put("nom_std", nomStd);
+            values.put("surface", surface);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             values.put("date_creation", sdf.format(dateCreation));
-            values.put("chef_lieu", getChefLieu());
-            values.put("url_wiki", getUrlWiki());
-            String critere = "no_dept = '" + getNoDept() + "'";
+            values.put("chef_lieu", chefLieu);
+            values.put("url_wiki", urlWiki);
+            String critere = "no_dept = '" + noDept + "'";
             db.update("departements", values, critere, null);
         } else {
             throw new GeoException("Numéro de département non renseigné");
@@ -87,15 +94,15 @@ public class Departement {
     public void insert() throws Exception {
         if (!getNoDept().isEmpty()) {
             ContentValues values = new ContentValues();
-            values.put("no_dept", getNoDept());
-            values.put("no_region", getNoRegion());
-            values.put("nom", getNom());
-            values.put("nom_std", getNomStd());
-            values.put("surface", getSurface());
+            values.put("no_dept", noDept);
+            values.put("no_region", noRegion);
+            values.put("nom", nom);
+            values.put("nom_std", nomStd);
+            values.put("surface", surface);
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             values.put("date_creation", sdf.format(dateCreation));
-            values.put("chef_lieu", getChefLieu());
-            values.put("url_wiki", getUrlWiki());
+            values.put("chef_lieu", chefLieu);
+            values.put("url_wiki", urlWiki);
 
             try {
                 db.insert("departements", "", values);
@@ -189,4 +196,11 @@ public class Departement {
         this.urlWiki = urlWiki;
     }
 
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
+    }
 }

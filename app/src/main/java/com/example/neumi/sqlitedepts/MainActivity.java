@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import java.text.ParseException;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText etDateCreation;
     private EditText etChefLieu;
     private EditText etUrlWiki;
+    private EditText etNomRegion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         etDateCreation = findViewById(R.id.etDateCreation);
         etChefLieu = findViewById(R.id.etChefLieu);
         etUrlWiki = findViewById(R.id.etUrlWiki);
+        etNomRegion = findViewById(R.id.etNomRegion);
     }
 
     public void btSearch(View view) {
@@ -93,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         etDateCreation.getText().clear();
         etChefLieu.getText().clear();
         etUrlWiki.getText().clear();
+        etNomRegion.getText().clear();
         etNoDept.setEnabled(true);
     }
 
@@ -105,6 +107,7 @@ public class MainActivity extends AppCompatActivity {
         etDateCreation.setText(dept.getDateCreation());
         etChefLieu.setText(dept.getChefLieu());
         etUrlWiki.setText(dept.getUrlWiki());
+        etNomRegion.setText(dept.getRegion().getNom());
     }
 
     private void transfertObjDep() throws GeoException, ParseException {

@@ -9,10 +9,6 @@ class DbGeo extends SQLiteOpenHelper {
     private static DbGeo instance;
     private static Context ctxt;
 
-    // Cette classe est définie comme un singleton :
-    //		Constructeur privé
-    //		Méthode statique getInstance()
-
     private DbGeo(Context ctxt) {
         super(ctxt, "geo", null, 1);
         this.ctxt = ctxt;
