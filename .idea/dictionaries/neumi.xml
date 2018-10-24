@@ -3,17 +3,23 @@
     <words>
       <w>colonnes</w>
       <w>critere</w>
+      <w>datecreate</w>
       <w>departement</w>
       <w>departements</w>
       <w>déjà</w>
       <w>département</w>
+      <w>départements</w>
       <w>erreur</w>
       <w>existant</w>
+      <w>introuvable</w>
       <w>numéro</w>
+      <w>renseigné</w>
       <w>supprimer</w>
       <w>tranfert</w>
       <w>transfert</w>
       <w>trouvé</w>
+      <w>valide</w>
+      <w>vide</w>
     </words>
   </dictionary>
 </component>

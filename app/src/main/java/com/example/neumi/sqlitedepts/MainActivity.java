@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.ParseException;
+
 public class MainActivity extends AppCompatActivity {
 
     private Departement dept;
@@ -35,41 +37,39 @@ public class MainActivity extends AppCompatActivity {
         etUrlWiki = findViewById(R.id.etUrlWiki);
     }
 
-    public void btSearch(View view) throws Exception {
+    public void btSearch(View view) {
         String search = etSearch.getText().toString();
         try {
             dept.select(search);
             transfertDepObj();
             etNoDept.setEnabled(false);
         } catch (Exception e) {
-            Toast.makeText(this, "Numéro de département non trouvé", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
     public void btInsert(View view) {
-        transfertObjDep();
         try {
+            transfertObjDep();
             dept.insert();
             clear();
         } catch (Exception e) {
-            Toast.makeText(this, "Numéro de département déjà existant", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
     public void btClear(View view) {
         clear();
-        etNoDept.setEnabled(true);
         dept = new Departement(this);
     }
 
     public void btUpdate(View view) {
-
-        transfertObjDep();
         try {
+            transfertObjDep();
             dept.update();
             clear();
         } catch (Exception e) {
-            Toast.makeText(this, "Numéro de département n'existe pas", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             dept.delete();
             clear();
         } catch (Exception e) {
-            Toast.makeText(this, "Erreur", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity {
         etDateCreation.getText().clear();
         etChefLieu.getText().clear();
         etUrlWiki.getText().clear();
+        etNoDept.setEnabled(true);
     }
 
     private void transfertDepObj() {
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         etUrlWiki.setText(dept.getUrlWiki());
     }
 
-    private void transfertObjDep() {
+    private void transfertObjDep() throws GeoException, ParseException {
         dept.setNoDept(etNoDept.getText().toString());
         dept.setNoRegion(Integer.parseInt(etNoRegion.getText().toString()));
         dept.setNom(etNom.getText().toString());

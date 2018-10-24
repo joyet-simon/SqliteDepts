@@ -13,7 +13,8 @@
             android:id="@+id/etSearch"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:hint="@string/noToSearch" />
+            android:hint="@string/noToSearch"
+            android:inputType="text" />
 
         <ImageView
             style="@style/button_picture"
@@ -35,7 +36,7 @@
         <EditText
             android:id="@+id/etNoDept"
             style="@style/input"
-            android:inputType="" />
+            android:inputType="text" />
 
         <TextView
             style="@style/label"
@@ -43,7 +44,8 @@
 
         <EditText
             android:id="@+id/etNoRegion"
-            style="@style/input" />
+            style="@style/input"
+            android:inputType="number" />
 
         <TextView
             style="@style/label"
@@ -51,7 +53,8 @@
 
         <EditText
             android:id="@+id/etNom"
-            style="@style/input" />
+            style="@style/input"
+            android:inputType="text" />
 
         <TextView
             style="@style/label"
@@ -59,7 +62,8 @@
 
         <EditText
             android:id="@+id/etNomStd"
-            style="@style/input" />
+            style="@style/input"
+            android:inputType="text" />
 
         <TextView
             style="@style/label"
@@ -67,7 +71,8 @@
 
         <EditText
             android:id="@+id/etSurface"
-            style="@style/input" />
+            style="@style/input"
+            android:inputType="number" />
 
         <TextView
             style="@style/label"
@@ -75,7 +80,8 @@
 
         <EditText
             android:id="@+id/etDateCreation"
-            style="@style/input" />
+            style="@style/input"
+            android:inputType="text" />
 
         <TextView
             style="@style/label"
@@ -83,7 +89,8 @@
 
         <EditText
             android:id="@+id/etChefLieu"
-            style="@style/input" />
+            style="@style/input"
+            android:inputType="text" />
 
         <TextView
             style="@style/label"
@@ -93,8 +100,8 @@
             android:id="@+id/etUrlWiki"
             android:layout_width="250dp"
             android:layout_height="50dp"
-            android:padding="0dp"
-            android:inputType="textMultiLine"/>
+            android:inputType="textMultiLine"
+            android:padding="0dp" />
     </GridLayout>
 
     <LinearLayout style="@style/buttons">

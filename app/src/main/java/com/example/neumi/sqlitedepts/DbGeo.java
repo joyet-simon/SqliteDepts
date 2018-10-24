@@ -38,7 +38,7 @@ class DbGeo extends SQLiteOpenHelper {
                 ",  nom TEXT NOT NULL" +
                 ",  nom_std TEXT NOT NULL" +
                 ",  surface INTEGER" +
-                ",  date_creation TEXT" +
+                ",  date_creation DATE" +
                 ",  chef_lieu TEXT" +
                 ",  url_wiki TEXT" +
                 ",  FOREIGN KEY(no_region) REFERENCES Regions(no_region)" +
